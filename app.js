@@ -5,6 +5,7 @@ var express = require('express')
 var flash = require('connect-flash-plus')
 var bodyParser = require('body-parser');
 const session = require('express-session');
+const cookieParser = require('cookie-parser')
 const passport =require('passport'); 
 const mongoose = require('mongoose');
 var path = require('path');
@@ -14,6 +15,7 @@ var path = require('path');
 
 
 var app=express()
+
 
 app.use(express.static(path.join(__dirname,'public')));
 
@@ -32,12 +34,41 @@ const Profile=require('./routes/profile');
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
+app.use(session({ 
+    key: 'user_sid', 
+    secret: 'somerandonstuffs', 
+    resave: false, 
+    secure:false, 
+    saveUninitialized: false, 
+    cookie: { 
+        expires: 600000 
+    } 
+}));
+app.use(cookieParser())
+app.use((req, res, next) => { 
+    if (req.cookies.user_sid && !req.session.user) { 
+        res.clearCookie('user_sid'); 
+    } 
+    next(); 
+}); 
+
+
+
 //Express session middleware
 app.use(session({
     secret: 'secret',
     resave: true,
     saveUninitialized: true
 }));
+
+var sessionChecker = (req, res, next) => { 
+    if (req.session.user && req.cookies.user_sid) { 
+        res.render('user'); 
+    } else { 
+        res.render('login'); 
+    } 
+};
+
 app.use(flash());
 
 
@@ -78,8 +109,14 @@ app.get('/login',function(req,res){
     res.render('login')
 })
 
-app.get('/profile',function(req,res){
-    res.render('profile')
+/*Session check*/
+
+app.get('/user',sessionChecker,function(req,res){
+    res.render('userprofile')
+})
+
+app.get('/admin',sessionChecker,function(req,res){
+    res.render('adminprofile')
 })
 
 

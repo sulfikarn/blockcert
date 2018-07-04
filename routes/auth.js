@@ -16,6 +16,7 @@ router.post('/',(req,res) => {
     User.findOne({
         email:req.body.email,
         isVerified:true,
+
         
       },
 
@@ -41,7 +42,7 @@ router.post('/',(req,res) => {
           else if(pass){
             if(email.myroll==1){
 
-              console.log('this is one');
+              console.log(email.myroll);
 
               res.render('adminprofile');
 
@@ -49,9 +50,9 @@ router.post('/',(req,res) => {
 
             } else if(email.myroll==2){
 
-              console.log('this is Two');
+              console.log(email.myroll);
               
-              res.render('userprofile');
+              res.redirect('user');
             }
            
           }

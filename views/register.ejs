@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <% include partials/head %>
+</head>
+<style>
+
+select {
+  font-family: Raleway', sans-serif;
+  font-size: 32px;
+  width: 100%;
+  height: 40px;
+}
+
+.copyright{
+    text-align: center;
+    margin-top: 85px;
+}
+
+</style>
+
+<body>
+<div class="signupform">
+    
+
+	<div class="container">
+		
+		<div class="agile_info">
+			
+			<div class="w3_info">
+				<h2>Create An Account</h2>
+                <p>Vestibulum est nulla, fermentum eget euismod et, tincidunt at dui dolor sit.</p>
+                
+                <% if(this.update) { %> 
+                    <p><%= update %></p> 
+						<% } %>
+						
+						<form action="#" method="post" action="register">
+							<div><label>First Name</label></div>
+						<div class="input-group">
+							<span><i class="fa fa-user" aria-hidden="true"></i></span>
+							<input type="text" placeholder="First Name" name="fname" required="" > 
+						</div>
+
+						<div><label>Last Name</label></div>
+						<div class="input-group">
+							<span><i class="fa fa-user" aria-hidden="true"></i></span>
+							<input type="text" placeholder="Last Name" name="lname" required=""> 
+						</div>
+
+						<div><label>Email</label></div>
+						<div class="input-group">
+							<span><i class="fa fa-envelope" aria-hidden="true"></i></span>
+							<input type="email" placeholder="Email" name="email" required=""> 
+						</div>
+
+						<div><label>Password</label></div>
+						<div class="input-group">
+							<span><i class="fa fa-lock" aria-hidden="true"></i></span>
+							<input type="Password" placeholder="Password" name="password" required="">
+						</div>
+
+						<div><label>Repeat Password</label></div>
+						<div class="input-group">
+							<span><i class="fa fa-lock" aria-hidden="true"></i></span>
+							<input type="Password" placeholder="Confirm Password" name="cpassword" required="">
+						</div>
+						
+						<div><label>My Role</label></div>
+						<div>
+							<select name="myroll">
+								<option value="1">admin</option>
+								<option value="2">user</option>
+							</select>
+						</div>
+							        
+							<button class="btn btn-danger btn-block" type="submit">Create Account</button >                
+                    </form>
+                    <p>Already have an account?<a href="login">Log In Here</a></p>
+			</div>
+
+			<div class="w3l_form">
+				<div class="left_grid_info">
+					<h3>Welcome !</h3>
+					<h4>Lorem ipsum dolor sit amet, nulla consectetur adipiscing elit Sed.</h4>
+					<p> Nam eleifend velit eget dolor vestibulum ornare. Vestibulum est nulla, fermentum eget euismod et, tincidunt at dui. Nulla tellus nisl, semper id justo vel, rutrum finibus risus. Cras vel auctor odio.</p>
+					<ul class="social_section_1info">
+						<li><a href="#" class="w3_facebook"><i class="fa fa-facebook"></i></a></li>
+						<li><a href="#" class="w3_twitter"><i class="fa fa-twitter"></i></a></li>
+						<li><a href="#" class="w3_instagram"><i class="fa fa-instagram"></i></a></li>
+						<li><a href="#" class="w3_google"><i class="fa fa-google-plus"></i></a></li>
+						<li><a href="#" class="w3_pinterest"><i class="fa fa-pinterest"></i></a></li>
+						<li><a href="#" class="w3_vimeo"><i class="fa fa-vimeo"></i></a></li>
+					</ul>
+                </div>
+                <% include partials/footer %>
+            </div>
+            
+            
+
+			<div class="clear"></div>
+			</div>
+			
+		</div>
+		
+	</div>
+	</body>
+</html>

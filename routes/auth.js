@@ -43,7 +43,7 @@ router.post('/',(req,res) => {
 
               console.log('this is one');
 
-              //res.render('profile');
+              res.render('adminprofile');
 
 
 
@@ -51,7 +51,7 @@ router.post('/',(req,res) => {
 
               console.log('this is Two');
               
-              //res.render('profile');
+              res.render('userprofile');
             }
            
           }
